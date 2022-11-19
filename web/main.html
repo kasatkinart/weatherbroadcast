@@ -16,9 +16,16 @@
 
   <button id="show">Find out the weather</button>
 
-    <hr noshade color="white" size="2">
-
-  <div id="info"></div>
+<!--    <hr noshade color="white" size="2">-->
+<div class = 'invisible'>
+  <div class = 'forecast'>
+    <p>Temperature:</p><div  id="temp"></div>
+  </div>
+  <div class = 'forecast'><p>Clouds:</p><div  id="clouds"></div>
+    <p>Humidity:</p>
+    <div  id="humidity"></div>
+  </div>
+</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type="text/javascript">
@@ -26,13 +33,16 @@
 
     async function display_weather() {
       let place = document.getElementById('location').value;
-
       let res = await eel.get_weather(place)();
-      document.getElementById('info').innerHTML = res;
+      document.getElementById('temp').innerHTML = res['temp'] + "°C";
+      document.getElementById('clouds').innerHTML = res['clouds'];
+      document.getElementById('humidity').innerHTML = res['humidity'] + "%";
+      document.getElementsByClassName('invisible')[0].style.visibility = 'visible';
     }
 
     jQuery('#show').on('click', function() {
       display_weather();
+
     });
   </script>
 </body>

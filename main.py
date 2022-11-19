@@ -13,9 +13,7 @@ def get_weather(place):
     temp = w.temperature('celsius')['temp']
     humidity = w.humidity
     clouds = w.detailed_status
-    wind = w.wind
-    print(wind)
-    return 'В городе ' + place + ' сейчас: ' + str(temp) + '°С. ' + "Влажность составляет " + str(humidity) + "%. " + "Облачность: " + str(clouds)
+    return {'temp': temp, 'humidity': humidity, 'clouds': clouds}
 
 
 eel.init('web')
