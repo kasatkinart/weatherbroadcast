@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WeatherBroadcast</title>
+
+  <script src="eel.js"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="stylesheet" href="main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <input id="location" type="text", placeholder="Enter the name of the country and city..." required="" value="New York, USA">
+
+  <button id="show">Find out the weather</button>
+
+    <hr noshade color="white" size="2">
+
+  <div id="info"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    // JS code for Python functions
+
+    async function display_weather() {
+      let place = document.getElementById('location').value;
+
+      let res = await eel.get_weather(place)();
+      document.getElementById('info').innerHTML = res;
+    }
+
+    jQuery('#show').on('click', function() {
+      display_weather();
+    });
+  </script>
+</body>
+</html>
